@@ -1,16 +1,19 @@
-﻿<div ng-controller="SidebarController as vm">
-    <ht-sidebar when-done-animating="vm.sidebarReady()">
-        <div class="sidebar-filler"></div>
-        <div class="sidebar-dropdown"><a href="#">Menu</a></div>
-        <div class="sidebar-inner">
-            <div class="sidebar-widget"></div>
-            <ul class="navi">
-                <li class="nlightblue fade-selection-animation" ng-class="vm.isCurrent(r)"
-                    ng-repeat="r in vm.navRoutes">
-                    <a ui-sref="{{r.name}}"
-                       ng-bind-html="r.settings.content"></a>
-                </li>
-            </ul>
-        </div>
-    </ht-sidebar>
-</div>
+﻿<!-- sidebar: style can be found in sidebar.less -->
+<section class="sidebar" ng-controller="SidebarController as vm">
+    <!-- Sidebar user panel -->
+    <ht-user-panel></ht-user-panel>
+    <!-- search form -->
+    <ht-search-form></ht-search-form>
+    <!-- /.search form -->
+    <!-- sidebar menu: : style can be found in sidebar.less -->
+    <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        <li ng-class="vm.isCurrent(r)"
+            ng-repeat="r in vm.navRoutes">
+            <a ui-sref="{{r.name}}"
+               ng-bind-html="r.settings.content"></a>
+
+        </li>
+    </ul>
+</section>
+<!-- /.sidebar -->

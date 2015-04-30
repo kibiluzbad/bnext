@@ -21,9 +21,13 @@
                     controller: 'AdminController',
                     controllerAs: 'vm',
                     title: 'Admin',
+                    pageTitle: 'Admin',
                     settings: {
                         nav: 2,
                         content: '<i class="fa fa-lock"></i> Admin'
+                    },
+                    ncyBreadcrumb: {
+                        label: '<i class="fa fa-lock"></i> Admin'
                     }
                 }
             }

@@ -22,7 +22,7 @@
         function activate() {
             var promises = [getMessageCount(), getPeople()];
             return $q.all(promises).then(function() {
-                logger.info('Activated Dashboard View');
+                //logger.info('Activated Dashboard View');
             });
         }
 

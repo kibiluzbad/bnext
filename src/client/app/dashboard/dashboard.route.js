@@ -21,9 +21,13 @@
                     controller: 'DashboardController',
                     controllerAs: 'vm',
                     title: 'dashboard',
+                    pageTitle: 'Dashboard',
                     settings: {
                         nav: 1,
                         content: '<i class="fa fa-dashboard"></i> Dashboard'
+                    },
+                    ncyBreadcrumb: {
+                        label: '<i class="fa fa-dashboard"></i> Dashboard'
                     }
                 }
             }

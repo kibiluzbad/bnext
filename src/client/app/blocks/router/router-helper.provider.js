@@ -92,7 +92,9 @@
                         stateCounts.changes++;
                         handlingStateChangeError = false;
                         var title = config.docTitle + ' ' + (toState.title || '');
+                        var pageTitle = (toState.pageTitle || '');
                         $rootScope.title = title; // data bind to <title>
+                        $rootScope.pageTitle = pageTitle; // data bind to <h1>
                     }
                 );
             }

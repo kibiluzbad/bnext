@@ -1,19 +1,35 @@
-<div ng-controller="ShellController as vm">
-    <header class="clearfix">
-        <ht-top-nav navline="vm.navline"></ht-top-nav>
-    </header>
-    <section id="content" class="content">
-        <div ng-include="'app/layout/sidebar.html'"></div>
+<div class="wrapper" ng-controller="ShellController as vm">
+    <ht-top-nav navline="vm.navline"></ht-top-nav>
+    <!-- Left side column. contains the logo and sidebar -->
+    <aside class="main-sidebar">
+        <ng-include src="'app/layout/sidebar.html'"></ng-include>
+    </aside>
 
-        <div ui-view class="shuffle-animation"></div>
+    <!-- Content Wrapper. Contains page content -->
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+       <ncy-breadcrumb></ncy-breadcrumb>
 
-        <div ngplus-overlay
-             ngplus-overlay-delay-in="50"
-             ngplus-overlay-delay-out="700"
-             ngplus-overlay-animation="dissolve-animation">
-            <img src="images/busy.gif"/>
+        <!-- Main content -->
+        <section class="content">
+            <div ui-view class="shuffle-animation"></div>
 
-            <div class="page-spinner-message overlay-message">{{vm.busyMessage}}</div>
+            <div ngplus-overlay
+                 ngplus-overlay-delay-in="50"
+                 ngplus-overlay-delay-out="700"
+                 ngplus-overlay-animation="dissolve-animation">
+                <img src="images/busy.gif"/>
+
+                <div class="page-spinner-message overlay-message">{{vm.busyMessage}}</div>
+            </div>
+        </section><!-- /.content -->
+    </div><!-- /.content-wrapper -->
+
+    <footer class="main-footer">
+        <div class="pull-right hidden-xs">
+            <b>Version</b> 2.0
         </div>
-    </section>
-</div>
+        <strong>Copyright &copy; 2014-2015 <a href="http://almsaeedstudio.com">Almsaeed Studio</a>.</strong> All rights reserved.
+    </footer>
+
+</div><!-- ./wrapper -->

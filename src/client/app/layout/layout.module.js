@@ -1,5 +1,6 @@
 (function() {
     'use strict';
 
-    angular.module('app.layout', ['app.core']);
+    angular
+        .module('app.layout', ['app.core','ncy-angular-breadcrumb']);
 })();

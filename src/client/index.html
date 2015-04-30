@@ -22,11 +22,12 @@
 
     <!-- build:css styles/app.css-->
     <!-- inject:css -->
-    <link rel="stylesheet" href="/.tmp/styles.css">
+    <link rel="stylesheet" href="/styles/AdminLTE.css">
+    <link rel="stylesheet" href="/styles/skins/_all-skins.css">
     <!-- endinject -->
     <!-- endbuild -->
 </head>
-<body>
+<body class="skin-purple">
     <div>
         <div ng-include="'app/layout/shell.html'"></div>
         <div id="splash-page" ng-show="showSplash">
@@ -52,6 +53,7 @@
     <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="/bower_components/toastr/toastr.js"></script>
     <script src="/bower_components/angular-animate/angular-animate.js"></script>
+    <script src="/bower_components/angular-breadcrumb/release/angular-breadcrumb.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -65,6 +67,7 @@
     <script src="/src/client/app/core/core.module.js"></script>
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
+    <script src="/src/client/app/layout/layout.config.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
@@ -78,8 +81,12 @@
     <script src="/src/client/app/core/dataservice.js"></script>
     <script src="/src/client/app/dashboard/dashboard.controller.js"></script>
     <script src="/src/client/app/dashboard/dashboard.route.js"></script>
+    <script src="/src/client/app/layout/ht-search-form.directive.js"></script>
+    <script src="/src/client/app/layout/ht-sidebar-collapse.directive.js"></script>
     <script src="/src/client/app/layout/ht-sidebar.directive.js"></script>
     <script src="/src/client/app/layout/ht-top-nav.directive.js"></script>
+    <script src="/src/client/app/layout/ht-user-account.directive.js"></script>
+    <script src="/src/client/app/layout/ht-user-panel.directive.js"></script>
     <script src="/src/client/app/layout/shell.controller.js"></script>
     <script src="/src/client/app/layout/sidebar.controller.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>

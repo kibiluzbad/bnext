@@ -1,71 +1,145 @@
 <section id="dashboard-view" class="mainbar">
-    <section class="matter">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <ul class="today-datas">
-                        <li class="blightblue">
-                            <div class="pull-left"><i class="fa fa-plane"></i></div>
-                            <div class="datas-text pull-right">
-                                <span class="bold">May 18 - 19, 2015</span> Castle Resort, Neverland
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
+    <div class="row">
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-aqua"><i class="ion ion-ios-gear-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">CPU Traffic</span>
+                            <span class="info-box-number">90<small>%</small></span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-red"><i class="fa fa-google-plus"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Likes</span>
+                            <span class="info-box-number">41,410</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
 
-                        <li class="borange">
-                            <div class="pull-left"><i class="fa fa-envelope"></i></div>
-                            <div class="datas-text pull-right">
-                                <span class="bold">{{vm.messageCount}}</span> Messages
-                            </div>
-                            <div class="clearfix"></div>
-                        </li>
+                <!-- fix for small devices only -->
+                <div class="clearfix visible-sm-block"></div>
 
-                    </ul>
-                </div>
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-green"><i class="ion ion-ios-cart-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Sales</span>
+                            <span class="info-box-number">760</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
+                <div class="col-md-3 col-sm-6 col-xs-12">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-yellow"><i class="ion ion-ios-people-outline"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">New Members</span>
+                            <span class="info-box-number">2,000</span>
+                        </div><!-- /.info-box-content -->
+                    </div><!-- /.info-box -->
+                </div><!-- /.col -->
             </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="widget wviolet">
-                        <div ht-widget-header title="People"
-                             allow-collapse="true"></div>
-                        <div class="widget-content text-center text-info">
-                            <table class="table table-condensed table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>First Name</th>
-                                        <th>Last Name</th>
-                                        <th>Age</th>
-                                        <th>Location</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr ng-repeat="p in vm.people">
-                                        <td>{{p.firstName}}</td>
-                                        <td>{{p.lastName}}</td>
-                                        <td>{{p.age}}</td>
-                                        <td>{{p.location}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Monthly Recap Report</h3>
+                    <div class="box-tools pull-right">
+                        <button data-widget="collapse" class="btn btn-box-tool"><i class="fa fa-minus"></i></button>
+                        <div class="btn-group">
+                            <button data-toggle="dropdown" class="btn btn-box-tool dropdown-toggle"><i class="fa fa-wrench"></i></button>
+                            <ul role="menu" class="dropdown-menu">
+                                <li><a href="#">Action</a></li>
+                                <li><a href="#">Another action</a></li>
+                                <li><a href="#">Something else here</a></li>
+                                <li class="divider"></li>
+                                <li><a href="#">Separated link</a></li>
+                            </ul>
                         </div>
-                        <div class="widget-foot">
-                            <div class="clearfix"></div>
-                        </div>
+                        <button data-widget="remove" class="btn btn-box-tool"><i class="fa fa-times"></i></button>
                     </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="widget wgreen">
-                        <div ht-widget-header title="{{vm.news.title}}"
-                             allow-collapse="true"></div>
-                        <div class="widget-content text-center text-info">
-                            <small>{{vm.news.description}}</small>
+                </div><!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <p class="text-center">
+                                <strong>Sales: 1 Jan, 2014 - 30 Jul, 2014</strong>
+                            </p>
+                            <div class="chart-responsive">
+                                <!-- Sales Chart Canvas -->
+                                <canvas height="190" id="salesChart" style="width: 1067px; height: 190px;" width="1067"></canvas>
+                            </div><!-- /.chart-responsive -->
+                        </div><!-- /.col -->
+                        <div class="col-md-4">
+                            <p class="text-center">
+                                <strong>Goal Completion</strong>
+                            </p>
+                            <div class="progress-group">
+                                <span class="progress-text">Add Products to Cart</span>
+                                <span class="progress-number"><b>160</b>/200</span>
+                                <div class="progress sm">
+                                    <div style="width: 80%" class="progress-bar progress-bar-aqua"></div>
+                                </div>
+                            </div><!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Complete Purchase</span>
+                                <span class="progress-number"><b>310</b>/400</span>
+                                <div class="progress sm">
+                                    <div style="width: 80%" class="progress-bar progress-bar-red"></div>
+                                </div>
+                            </div><!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Visit Premium Page</span>
+                                <span class="progress-number"><b>480</b>/800</span>
+                                <div class="progress sm">
+                                    <div style="width: 80%" class="progress-bar progress-bar-green"></div>
+                                </div>
+                            </div><!-- /.progress-group -->
+                            <div class="progress-group">
+                                <span class="progress-text">Send Inquiries</span>
+                                <span class="progress-number"><b>250</b>/500</span>
+                                <div class="progress sm">
+                                    <div style="width: 80%" class="progress-bar progress-bar-yellow"></div>
+                                </div>
+                            </div><!-- /.progress-group -->
+                        </div><!-- /.col -->
+                    </div><!-- /.row -->
+                </div><!-- ./box-body -->
+                <div class="box-footer">
+                    <div class="row">
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 17%</span>
+                                <h5 class="description-header">$35,210.43</h5>
+                                <span class="description-text">TOTAL REVENUE</span>
+                            </div><!-- /.description-block -->
+                        </div><!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-yellow"><i class="fa fa-caret-left"></i> 0%</span>
+                                <h5 class="description-header">$10,390.90</h5>
+                                <span class="description-text">TOTAL COST</span>
+                            </div><!-- /.description-block -->
+                        </div><!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block border-right">
+                                <span class="description-percentage text-green"><i class="fa fa-caret-up"></i> 20%</span>
+                                <h5 class="description-header">$24,813.53</h5>
+                                <span class="description-text">TOTAL PROFIT</span>
+                            </div><!-- /.description-block -->
+                        </div><!-- /.col -->
+                        <div class="col-sm-3 col-xs-6">
+                            <div class="description-block">
+                                <span class="description-percentage text-red"><i class="fa fa-caret-down"></i> 18%</span>
+                                <h5 class="description-header">1200</h5>
+                                <span class="description-text">GOAL COMPLETIONS</span>
+                            </div><!-- /.description-block -->
                         </div>
-                        <div class="widget-foot">
-                            <div class="clearfix"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+                    </div><!-- /.row -->
+                </div><!-- /.box-footer -->
+            </div><!-- /.box -->
+        </div><!-- /.col -->
+    </div>
 </section>

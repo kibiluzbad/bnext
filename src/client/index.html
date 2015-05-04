@@ -76,6 +76,85 @@
             margin: 30% auto 0 auto;
             font-size: 200%;
         }
+
+        .flag-haschanges {
+            position: fixed !important;
+            display: inline;
+        }
+
+        .fa-asterisk.fa-asterisk-large {
+            font-size: 180%;
+            vertical-align: middle;
+            color: #F58A00;
+        }
+
+        .fa-asterisk.fa-asterisk-alert {
+            color: #F58A00;
+        }
+
+        .fa-asterisk-inline {
+            padding: 0 4px 0 0;
+        }
+
+
+        .progress,
+        .page-progress-bar {
+            margin: 30px 10% !important;
+        }
+
+        .ngplus-overlay-background {
+            top: 0px;
+            left: 0px;
+            padding-left: 100px;
+            position: absolute;
+            z-index: 10000;
+            height: 100%;
+            width: 100%;
+            background-color: #808080;
+            opacity: 0.2;
+        }
+
+        .ngplus-overlay-content {
+            position: absolute;
+            /*border: 1px solid #000;*/
+            /*background-color: #fff;*/
+            font-weight: bold;
+            height: 100px;
+            width: 300px;
+            height: 15em;
+            width: 20em;
+            z-index: 10000;
+            text-align: center;
+        }
+
+        .page-spinner-message {
+            text-align: center;
+            font-size: 400%;
+            font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+            font-weight: normal;
+            -webkit-text-shadow: 2px 2px #000000;
+            text-shadow: 2px 2px #000000;
+            text-shadow: 2px 2px rgba(0, 0, 0, 0.15);
+            text-transform: uppercase;
+            text-decoration: none;
+            color: #F58A00;
+            padding: 0;
+        }
+
+        .page-spinner-message.page-spinner-message-subtle {
+            margin: 30% auto 0 auto;
+            font-size: 200%;
+        }
+
+        .overlay-message {
+            font-size: 200%;
+        }
+        .spinner {
+            margin: 20% auto 0 auto;
+            left: auto;
+            top: auto !important;
+        }
+        /*#endregion*/
     </style>
 </head>
 <body class="login-page">
@@ -121,6 +200,7 @@
     <script src="/src/client/app/dashboard/dashboard.module.js"></script>
     <script src="/src/client/app/layout/layout.module.js"></script>
     <script src="/src/client/app/widgets/widgets.module.js"></script>
+    <script src="/src/client/app/projects/project.module.js"></script>
     <script src="/src/client/app/admin/admin.controller.js"></script>
     <script src="/src/client/app/admin/admin.route.js"></script>
     <script src="/src/client/app/blocks/configuration/configuration.js"></script>
@@ -150,6 +230,8 @@
     <script src="/src/client/app/layout/sidebar.controller.js"></script>
     <script src="/src/client/app/widgets/ht-img-person.directive.js"></script>
     <script src="/src/client/app/widgets/ht-widget-header.directive.js"></script>
+    <script src="/src/client/app/projects/project.route.js"></script>
+    <script src="/src/client/app/projects/project.controller.js"></script>
     <!-- endinject -->
 
     <!-- inject:templates:js -->

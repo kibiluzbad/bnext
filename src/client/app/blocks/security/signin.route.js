@@ -59,6 +59,23 @@
                         roles:[]
                     }
                 }
+            },
+            {
+                state: 'signout',
+                config: {
+                    url: '/signout',
+                    template: '<ui-view/>',
+                    controller: 'SignoutController',
+                    controllerAs: 'vm',
+                    title: 'Signout',
+                    pageTitle: '',
+                    settings: {},
+                    ncyBreadcrumb: {},
+                    parent:'public',
+                    data:{
+                        roles:[]
+                    }
+                }
             }
         ];
     }

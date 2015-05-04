@@ -5,7 +5,7 @@
         oauthUrl:'http://localhost:3000'
     };
 
-    angular.module('blocks.authentication')
+    angular.module('blocks.security')
         .value('config',config);
 
 

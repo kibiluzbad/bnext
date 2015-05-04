@@ -22,6 +22,10 @@
                     controllerAs: 'vm',
                     title: 'dashboard',
                     pageTitle: 'Dashboard',
+                    parent:'internal',
+                    data:{
+                        roles:['User']
+                    },
                     settings: {
                         nav: 1,
                         content: '<i class="fa fa-dashboard"></i> Dashboard'

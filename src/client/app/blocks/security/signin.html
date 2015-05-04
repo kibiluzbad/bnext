@@ -1,0 +1,36 @@
+<div class="login-box">
+    <div class="login-logo">
+        <a href="../../index2.html"><b>Admin</b>LTE</a>
+    </div><!-- /.login-logo -->
+    <div class="login-box-body">
+        <p class="login-box-msg">Sign in to start your session</p>
+        <form method="post" ng-submit="vm.signin()">
+            <div class="form-group has-feedback">
+                <input type="text" placeholder="Email" ng-model="vm.user.email" class="form-control">
+                <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+            </div>
+            <div class="form-group has-feedback">
+                <input type="password" ng-model="vm.user.password" placeholder="Password" class="form-control">
+                <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+            </div>
+            <div class="row">
+                <div class="col-xs-8">
+                  <input type="checkbox"> <span>Remember Me</span>
+                </div><!-- /.col -->
+                <div class="col-xs-4">
+                    <button class="btn btn-primary btn-block btn-flat" type="submit">Sign In</button>
+                </div><!-- /.col -->
+            </div>
+        </form>
+
+        <div class="social-auth-links text-center">
+            <p>- OR -</p>
+            <a class="btn btn-block btn-social btn-facebook btn-flat" href="#"><i class="fa fa-facebook"></i> Sign in using Facebook</a>
+            <a class="btn btn-block btn-social btn-google-plus btn-flat" href="#"><i class="fa fa-google-plus"></i> Sign in using Google+</a>
+        </div><!-- /.social-auth-links -->
+
+        <a href="#">I forgot my password</a><br>
+        <a class="text-center" href="register.html">Register a new membership</a>
+
+    </div><!-- /.login-box-body -->
+</div>

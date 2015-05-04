@@ -2,5 +2,5 @@
     'use strict';
 
     angular
-        .module('app.layout', ['app.core','ncy-angular-breadcrumb']);
+        .module('app.layout', ['app.core','ncy-angular-breadcrumb','blocks.security']);
 })();

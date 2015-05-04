@@ -1,6 +1,6 @@
 (function() {
     'use strict';
 
-    angular.module('blocks.security', ['blocks.logger','ui.router']);
+    angular.module('blocks.security', ['blocks.logger','blocks.router','ui.router']);
 
 })();

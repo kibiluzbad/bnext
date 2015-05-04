@@ -17,6 +17,7 @@
                 state: '404',
                 config: {
                     url: '/404',
+                    data:{roles:[]},
                     templateUrl: 'app/core/404.html',
                     title: '404'
                 }

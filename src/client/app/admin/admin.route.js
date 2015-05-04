@@ -22,6 +22,10 @@
                     controllerAs: 'vm',
                     title: 'Admin',
                     pageTitle: 'Admin',
+                    parent:'internal',
+                    data:{
+                        roles:['User']
+                    },
                     settings: {
                         nav: 2,
                         content: '<i class="fa fa-lock"></i> Admin'

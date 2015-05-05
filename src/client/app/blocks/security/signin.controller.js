@@ -10,10 +10,7 @@
     /* @ngInject */
     function SigninController($scope, $state, principal, logger) {
         var vm = this;
-        vm.user = {
-            name:'Test user',
-            roles:['User']
-        };
+        vm.user = {};
         vm.signin = signin;
 
         activate();
@@ -23,11 +20,18 @@
         }
 
         function signin() {
-            principal.authenticate(vm.user);
+            principal.authenticate(vm.user).then(function(token){
+                principal.identity(true).then(function(user){
+                    $scope.returnToState
+                        ? $state.go($scope.returnToState.name, $scope.returnToStateParams)
+                        : $state.go('dashboard');
+                });
+            },function(err){
 
-            $scope.returnToState
-                ? $state.go($scope.returnToState.name, $scope.returnToStateParams)
-                : $state.go('dashboard');
+                logger.error(err);
+            });
+
+
         }
     }
 })();

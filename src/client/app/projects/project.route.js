@@ -16,22 +16,22 @@
             {
                 state: 'projects',
                 config: {
-                    url: '/projects',
-                    templateUrl: 'app/projects/projects.html',
-                    controller: 'ProjectsController',
+                    url: '/builds',
+                    templateUrl: 'app/projects/builds.html',
+                    controller: 'BuildsController',
                     controllerAs: 'vm',
-                    title: 'projects',
-                    pageTitle: 'Projects',
+                    title: 'builds',
+                    pageTitle: 'builds',
                     parent:'internal',
                     data:{
                         roles:['User']
                     },
                     settings: {
                         nav: 3,
-                        content: '<i class="fa fa-code"></i> Projects'
+                        content: '<i class="fa fa-code"></i> Builds'
                     },
                     ncyBreadcrumb: {
-                        label: '<i class="fa fa-code"></i> Projects'
+                        label: '<i class="fa fa-code"></i> Builds'
                     }
                 }
             }

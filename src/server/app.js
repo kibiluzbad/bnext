@@ -42,6 +42,13 @@ switch (environment){
         app.use('/app/*', function(req, res, next) {
             four0four.send404(req, res);
         });
+
+        app.post('/oauth/token', oauthTokenPost);
+        app.get('/me', getMe);
+        app.get('/projects', getProjects);
+        app.get('/projects/:projectId/builds', getBuilds);
+        app.get('/builds', getBuilds);
+
         // Any deep link calls should return index.html
         app.use('/*', express.static('./src/client/index.html'));
         break;
@@ -53,3 +60,37 @@ app.listen(port, function() {
         '\n__dirname = ' + __dirname  +
         '\nprocess.cwd = ' + process.cwd());
 });
+
+function oauthTokenPost(req,res){
+    var token = {token:'token','refresh_token':'refresh_token'}
+
+    return res.json(token);
+}
+
+function getMe(req,res){
+    if(!req.headers.authorization) return res.status(403).json({message:'Access denied'});
+    var user = {
+        name:'Test User',
+        email: 'test.user@domain.com',
+        roles:['User'],
+        avatarUri:'/images/user2-160x160.jpg',
+        title: 'Application User',
+        createdAt: new Date(2015,1,1)
+    };
+
+    res.json(user);
+}
+
+function getProjects(req,res){
+    return res.json([{id:'rewr-rewrwe-rwer-rwer',name:'gingaeureka/eureka-api'}]);
+}
+
+function getBuilds(req,res){
+    var builds = [
+        {id:'36a229a1', name:'gingaeureka/eureka-api',message:'Change socket', createAt: new Date(2015,30,4,4,34), branch: 'qa', timeSpent: 1, status: 'Success', username:'leonardoginga', repoProvider:'Bitbucket'},
+        {id:'68f96bd2', name:'gingaeureka/eureka-api',message:'Responsavel configuracoes ', createAt: new Date(2015,30,4,3,34), branch: 'qa', timeSpent: 1, status: 'Failed',username:'leonardoginga', repoProvider:'Bitbucket'},
+        {id:'e345b95c', name:'gingaeureka/eureka-api',message:'Checkpoit boletim ', createAt: new Date(2015,30,4,1,34), branch: 'qa', timeSpent: 1, status: 'Success',username:'leonardoginga', repoProvider:'Bitbucket'}
+    ];
+
+    return res.json(builds);
+}

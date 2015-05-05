@@ -17,13 +17,16 @@
             text: 'Created by John Papa',
             link: 'http://twitter.com/john_papa'
         };
-        vm.layoutPath = '/app/layout/public-shell.html';
 
         //TODO: Place it inside a directive
         $rootScope.$on('authentication-successful',function(){
             $document.find('body').removeClass('login-page');
             $document.find('body').addClass('skin-purple')
-        })
+        });
+        $rootScope.$on('user-signedout',function(){
+            $document.find('body').addClass('login-page');
+            $document.find('body').removeClass('skin-purple');
+        });
 
         activate();
 

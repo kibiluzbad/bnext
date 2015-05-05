@@ -5,10 +5,10 @@
         .module('blocks.security')
         .factory('principal', principal);
 
-    principal.$inject = ['$q', '$http', '$timeout','$rootScope'];
+    principal.$inject = ['$q', '$http','$rootScope','configuration','$window'];
 
     /* @ngInject */
-    function principal($q, $http, $timeout,$rootScope) {
+    function principal($q, $http,$rootScope,configuration,$window) {
         var _identity = undefined,
             _authenticated = false;
 
@@ -18,7 +18,8 @@
             isInRole: isInRole,
             isInAnyRole: isInAnyRole,
             authenticate: authenticate,
-            identity: identity
+            identity: identity,
+            cleanUp: cleanUp
         };
 
         return service;
@@ -49,16 +50,28 @@
             return false;
         }
 
-        function authenticate(identity){
-            _identity = identity;
-            _authenticated = identity != null;
+        function authenticate(user){
+            var deferred = $q.defer();
+            var data = {
+                'grant_type':'passsword',
+                'client_id': configuration.clientId,
+                'client_secret':configuration.clientSecret,
+                'username': user.email,
+                'password': user.password
+            };
 
-            // for this demo, we'll store the identity in localStorage. For you, it could be a cookie, sessionStorage, whatever
-            if (identity){
-                localStorage.setItem("app.identity", angular.toJson(identity));
-                $rootScope.$broadcast('authentication-successful',identity);
-            }
-            else localStorage.removeItem("app.identity");
+            $http.post(configuration.oauthUri + '/oauth/token', data)
+                .success(function(token) {
+                    $window.sessionStorage["auth-token"]=token.access_token;
+                    $http.defaults.headers.common['Authorization'] = "Bearer "+token.access_token;
+                    $rootScope.$broadcast('authentication-successful',token);
+                    deferred.resolve(token);
+                })
+                .error(function (err) {
+                    deferred.reject(err);
+                });
+
+            return deferred.promise;
         }
 
         function identity(force){
@@ -74,29 +87,28 @@
                 return deferred.promise;
             }
 
-            // otherwise, retrieve the identity data from the server, update the identity object, and then resolve.
-            //                   $http.get('/svc/account/identity', { ignoreErrors: true })
-            //                        .success(function(data) {
-            //                            _identity = data;
-            //                            _authenticated = true;
-            //                            deferred.resolve(_identity);
-            //                        })
-            //                        .error(function () {
-            //                            _identity = null;
-            //                            _authenticated = false;
-            //                            deferred.resolve(_identity);
-            //                        });
-
-            // for the sake of the demo, we'll attempt to read the identity from localStorage. the example above might be a way if you use cookies or need to retrieve the latest identity from an api
-            // i put it in a timeout to illustrate deferred resolution
-            var self = this;
-            $timeout(function() {
-                _identity = angular.fromJson(localStorage.getItem("demo.identity"));
-                self.authenticate(_identity);
-                deferred.resolve(_identity);
-            }, 1000);
+            $http.get(configuration.oauthUri + '/me', { ignoreErrors: true })
+                .success(function(data) {
+                    _identity = data;
+                    _authenticated = true;
+                    deferred.resolve(_identity);
+                })
+                .error(function () {
+                    _identity = null;
+                    _authenticated = false;
+                    deferred.resolve(_identity);
+                });
 
             return deferred.promise;
+
+        }
+
+        function cleanUp(){
+            _identity = undefined;
+            _authenticated = false;
+            delete $window.sessionStorage["auth-token"];
+            delete $http.defaults.headers.common['Authorization'];
+            $rootScope.$broadcast('user-signedout',null);
 
         }
     }

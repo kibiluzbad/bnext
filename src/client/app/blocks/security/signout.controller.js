@@ -14,8 +14,8 @@
         activate();
 
         function activate() {
-            //TODO: Signout
-
+            principal.cleanUp();
+            $state.go('dashboard');
         }
 
 
